@@ -1,0 +1,43 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@import "tailwindcss";
+
+:root {
+  --font-poppins: var(--font-poppins);
+  --font-inter: var(--font-inter);
+}
+
+html, body {
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins);
+}
+
+/* Custom scrollbar optimisée */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00D164;
+  border-radius: 4px;
+  min-height: 40px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00b150;
+}
