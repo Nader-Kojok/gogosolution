@@ -20,6 +20,10 @@ const navigationLinks = [
     href: '#fleet'
   },
   { 
+    name: 'Équipements',
+    href: '#products'
+  },
+  { 
     name: 'À propos',
     href: '#about'
   },
