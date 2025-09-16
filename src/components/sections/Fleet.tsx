@@ -4,25 +4,25 @@ const vehicles = [
   {
     name: "Berline Premium",
     description: "Confort et élégance à partir de 25.000 FCFA sur Dakar",
-    image: "https://images.unsplash.com/photo-1549925862-990ac5b34e35?auto=format&fit=crop&q=80",
+    image: "/Berline.jpeg",
     features: ["Prix transparent", "Climatisation", "Sièges confortables", "Chauffeur qualifié"]
   },
   {
     name: "SUV Premium",
     description: "Espace et confort à partir de 35.000 FCFA sur Dakar",
-    image: "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?auto=format&fit=crop&q=80",
+    image: "/SUV.jpeg",
     features: ["Tarifs abordables", "Climatisation", "Grand confort", "Chauffeur qualifié"]
   },
   {
     name: "4x4 Tout-terrain",
     description: "Pour vos déplacements en tout terrain, prix à négocier",
-    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80",
+    image: "/4x4.webp",
     features: ["Tout-terrain", "Grand confort", "Chauffeur qualifié", "Prix sur mesure"]
   },
   {
     name: "Bus de transport",
     description: "Transport de groupe confortable, prix à négocier",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80",
+    image: "/bus.jpg",
     features: ["Grande capacité", "Climatisation", "Chauffeur qualifié", "Prix sur mesure"]
   }
 ];
@@ -84,4 +84,4 @@ const Fleet = () => {
   );
 };
 
-export default Fleet; 
+export default Fleet;

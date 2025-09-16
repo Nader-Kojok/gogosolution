@@ -7,6 +7,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import BookingClientWrapper from "@/components/BookingClientWrapper";
 import Stats from "@/components/sections/Stats";
 import Products from "@/components/sections/Products";
+import Pricing from "@/components/sections/Pricing";
 
 export default function Home() {
   // TODO: Gérer l'ouverture de la modal Booking côté client (via un composant client wrapper)
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Fleet />
+      <Pricing />
       <Products />
       <About />
       <Stats />

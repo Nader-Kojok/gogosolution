@@ -13,51 +13,51 @@ type GalleryImage = {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: "/gallery/luxury-sedan-1.jpg",
-    alt: "Luxury Sedan Interior",
+    src: "/Berline.jpeg",
+    alt: "Berline Premium",
     category: "Sedans"
   },
   {
     id: 2,
-    src: "/gallery/suv-1.jpg",
-    alt: "Premium SUV Exterior",
+    src: "/SUV.jpeg",
+    alt: "SUV Premium",
     category: "SUVs"
   },
   {
     id: 3,
-    src: "/gallery/wedding-1.jpg",
-    alt: "Wedding Transportation",
-    category: "Events"
+    src: "/4x4.webp",
+    alt: "4x4 Tout-terrain",
+    category: "4x4"
   },
   {
     id: 4,
-    src: "/gallery/corporate-1.jpg",
-    alt: "Corporate Travel",
-    category: "Corporate"
+    src: "/bus.jpg",
+    alt: "Bus de transport",
+    category: "Bus"
   },
   {
     id: 5,
-    src: "/gallery/luxury-sedan-2.jpg",
-    alt: "Executive Sedan",
+    src: "/Berline.jpeg",
+    alt: "Berline Executive",
     category: "Sedans"
   },
   {
     id: 6,
-    src: "/gallery/suv-2.jpg",
-    alt: "Luxury SUV Interior",
+    src: "/SUV.jpeg",
+    alt: "SUV Luxury Interior",
     category: "SUVs"
   },
   {
     id: 7,
-    src: "/gallery/wedding-2.jpg",
-    alt: "Wedding Limousine",
-    category: "Events"
+    src: "/4x4.webp",
+    alt: "4x4 Adventure",
+    category: "4x4"
   },
   {
     id: 8,
-    src: "/gallery/airport-1.jpg",
-    alt: "Airport Transfer",
-    category: "Corporate"
+    src: "/bus.jpg",
+    alt: "Transport de groupe",
+    category: "Bus"
   }
 ];
 
@@ -181,4 +181,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery; 
+export default Gallery;

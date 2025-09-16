@@ -2,8 +2,6 @@
 
 import Button from "@/components/ui/Button";
 import { MessageCircle } from "lucide-react";
-
-/* eslint-disable react/no-unescaped-entities */
 const products = [
   {
     title: "GPS Tracker",
@@ -24,7 +22,6 @@ const products = [
     features: ["Vision nocturne", "Grand angle", "Guide de stationnement", "Écran tactile"]
   }
 ];
-/* eslint-enable react/no-unescaped-entities */
 
 export default function Products() {
   const handleWhatsAppClick = () => {
@@ -89,4 +86,4 @@ export default function Products() {
       </div>
     </section>
   );
-} 
+}
