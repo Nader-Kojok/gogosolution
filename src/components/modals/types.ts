@@ -20,7 +20,8 @@ export interface FormData {
   hasLuggage: string;
   specialNeeds: string;
   specialNeedsDetails: string;
-  [key: string]: string; // Index signature pour permettre l'accès dynamique
+  submissionMethod?: string;
+  [key: string]: string | undefined; // Index signature pour permettre l'accès dynamique
 }
 
 export interface Question {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FormData, Vehicle } from './types';
 import { vehicles } from './vehiclesData';
 import { generateReceiptPDF, generateReservationNumber } from '../../utils/pdfGenerator';
+import { sendWhatsAppBooking, sendEmailBooking } from '../../utils/bookingSubmission';
 
 const initialFormData: FormData = {
   needsDriver: "",
@@ -30,6 +31,7 @@ export const useBookingForm = () => {
   const [isOutsideDakar, setIsOutsideDakar] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [reservationNumber, setReservationNumber] = useState("");
+  const [submissionMethod, setSubmissionMethod] = useState<string>("");
 
 
 
@@ -281,31 +283,39 @@ export const useBookingForm = () => {
     return totalPrice;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (method: 'whatsapp' | 'email') => {
     if (validateStep()) {
       // Générer un numéro de réservation unique
       const reservationNum = generateReservationNumber();
       setReservationNumber(reservationNum);
+      setSubmissionMethod(method);
       
       // Calculer le prix estimé
       const selectedVehicle = vehicles.find(v => v.id === formData.vehicleId);
       const estimatedPrice = selectedVehicle ? calculatePrice(selectedVehicle) : 'Prix à négocier';
       
+      const bookingData = {
+        formData,
+        reservationNumber: reservationNum,
+        estimatedPrice,
+        isOutsideDakar
+      };
+      
       // Générer et télécharger le PDF
       try {
-        generateReceiptPDF({
-          formData,
-          reservationNumber: reservationNum,
-          estimatedPrice,
-          isOutsideDakar
-        });
-        
-        setIsSuccess(true);
+        generateReceiptPDF(bookingData);
       } catch (error) {
         console.error('Erreur lors de la génération du PDF:', error);
-        // Afficher quand même le succès, le PDF peut être régénéré
-        setIsSuccess(true);
       }
+      
+      // Envoyer via WhatsApp ou Email
+      if (method === 'whatsapp') {
+        sendWhatsAppBooking(bookingData);
+      } else if (method === 'email') {
+        sendEmailBooking(bookingData);
+      }
+      
+      setIsSuccess(true);
     }
   };
 
@@ -317,6 +327,7 @@ export const useBookingForm = () => {
     setIsOutsideDakar(false);
     setIsSuccess(false);
     setReservationNumber("");
+    setSubmissionMethod("");
   };
 
   return {
@@ -334,6 +345,8 @@ export const useBookingForm = () => {
     setIsSuccess,
     reservationNumber,
     setReservationNumber,
+    submissionMethod,
+    setSubmissionMethod,
     getActiveSteps: getActiveStepsWithData,
     getCurrentField,
     validateStep,

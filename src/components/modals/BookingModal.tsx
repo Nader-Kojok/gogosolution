@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaTimes, FaCheckCircle } from "react-icons/fa";
+import { FaTimes, FaCheckCircle, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookingModalProps } from "./types";
@@ -19,6 +19,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     isOutsideDakar,
     isSuccess,
     reservationNumber,
+    submissionMethod,
     getActiveSteps,
     handleNext,
     handleBack,
@@ -67,16 +68,24 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
           {isSuccess ? (
              <div className="p-8 text-center">
                 <FaCheckCircle className="text-green-500 text-6xl mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-4 text-white">Réservation confirmée !</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white">Réservation envoyée !</h2>
                 <p className="text-gray-300 mb-4">
                   Votre numéro de réservation est : <strong className="text-green-400">{reservationNumber}</strong>
                 </p>
                 <p className="text-sm text-gray-400 mb-4">
                   Votre reçu PDF a été téléchargé automatiquement.
                 </p>
-                <p className="text-sm text-gray-400 mb-6">
-                  Nous vous contacterons bientôt pour confirmer les détails.
-                </p>
+                {submissionMethod === 'whatsapp' ? (
+                  <p className="text-sm text-gray-400 mb-6">
+                    <FaWhatsapp className="inline mr-2 text-green-500" />
+                    Votre réservation a été envoyée via WhatsApp. Nous vous répondrons rapidement !
+                  </p>
+                ) : (
+                  <p className="text-sm text-gray-400 mb-6">
+                    <FaEnvelope className="inline mr-2 text-blue-500" />
+                    Votre réservation a été envoyée par email. Nous vous contacterons bientôt !
+                  </p>
+                )}
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button 
                      onClick={() => {
@@ -172,19 +181,24 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                  </Button>
                  
                  {isLastStep ? (
-                   <Button
-                     onClick={handleSubmit}
-                     variant="primary"
-                   >
-                     Confirmer la réservation
-                   </Button>
-                 ) : step === 11 ? (
-                   <Button
-                     onClick={handleNext}
-                     variant="primary"
-                   >
-                     Suivant
-                   </Button>
+                   <div className="flex gap-3">
+                     <Button
+                       onClick={() => handleSubmit('whatsapp')}
+                       variant="primary"
+                       className="bg-green-600 hover:bg-green-700 flex items-center gap-2"
+                     >
+                       <FaWhatsapp size={18} />
+                       Réserver par WhatsApp
+                     </Button>
+                     <Button
+                       onClick={() => handleSubmit('email')}
+                       variant="secondary"
+                       className="flex items-center gap-2"
+                     >
+                       <FaEnvelope size={16} />
+                       Réserver par Email
+                     </Button>
+                   </div>
                  ) : (
                    <Button
                      onClick={handleNext}
