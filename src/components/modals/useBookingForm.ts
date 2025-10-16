@@ -283,7 +283,7 @@ export const useBookingForm = () => {
     return totalPrice;
   };
 
-  const handleSubmit = (method: 'whatsapp' | 'email') => {
+  const handleSubmit = async (method: 'whatsapp' | 'email') => {
     if (validateStep()) {
       // Générer un numéro de réservation unique
       const reservationNum = generateReservationNumber();
@@ -311,11 +311,15 @@ export const useBookingForm = () => {
       // Envoyer via WhatsApp ou Email
       if (method === 'whatsapp') {
         sendWhatsAppBooking(bookingData);
+        setIsSuccess(true);
       } else if (method === 'email') {
-        sendEmailBooking(bookingData);
+        const result = await sendEmailBooking(bookingData);
+        if (result.success) {
+          setIsSuccess(true);
+        } else {
+          alert(`Erreur lors de l'envoi de l'email: ${result.error}`);
+        }
       }
-      
-      setIsSuccess(true);
     }
   };
 

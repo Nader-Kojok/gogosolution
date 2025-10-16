@@ -189,15 +189,54 @@ export const formatEmailContent = (data: BookingData): { subject: string; body: 
 };
 
 /**
- * Ouvre le client email avec le message pré-rempli
+ * Envoie la réservation par email via l'API
  */
-export const sendEmailBooking = (data: BookingData, recipientEmail: string = CONTACT_CONFIG.email): void => {
-  const { subject, body } = formatEmailContent(data);
-  const encodedSubject = encodeURIComponent(subject);
-  const encodedBody = encodeURIComponent(body);
+export const sendEmailBooking = async (data: BookingData): Promise<{ success: boolean; error?: string }> => {
+  const { formData, reservationNumber, estimatedPrice, isOutsideDakar } = data;
   
-  const mailtoUrl = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
-  
-  // Ouvrir le client email
-  window.location.href = mailtoUrl;
+  try {
+    const response = await fetch('/api/send-booking', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        customerName: formData.name,
+        reservationNumber: reservationNumber,
+        serviceType: formData.serviceType,
+        date: formData.date,
+        time: formData.time,
+        pickup: formData.pickup,
+        dropoff: formData.dropoff,
+        passengers: formData.passengers,
+        vehicleName: formData.vehicleId,
+        estimatedPrice: typeof estimatedPrice === 'number' 
+          ? `${estimatedPrice.toLocaleString('fr-FR')} FCFA` 
+          : estimatedPrice,
+        phone: formData.phone,
+        flightNumber: formData.flightNumber,
+        duration: formData.duration 
+          ? `${formData.duration} ${formData.serviceType === 'hourly' ? 'heure(s)' : 'jour(s)'}`
+          : undefined,
+        location: formData.location 
+          ? (isOutsideDakar ? 'Hors Dakar' : 'Dakar')
+          : undefined,
+        needsDriver: formData.needsDriver,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Erreur lors de l\'envoi de l\'email');
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi de l\'email:', error);
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : 'Erreur inconnue' 
+    };
+  }
 };
