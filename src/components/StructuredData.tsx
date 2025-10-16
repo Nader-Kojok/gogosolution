@@ -11,7 +11,7 @@ export function LocalBusinessSchema() {
     "url": "https://GOGOSOLUTION.com",
     "logo": "https://GOGOSOLUTION.com/logo.svg",
     "image": "https://GOGOSOLUTION.com/og-image.jpg",
-    "telephone": "+221-XX-XXX-XXXX",
+    "telephone": "+221 77 533 43 59",
     "email": "contact@gogosolution.com",
     "priceRange": "$$",
     "address": {
