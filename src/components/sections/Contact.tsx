@@ -7,8 +7,8 @@ const contactInfo = [
   {
     icon: FaPhone,
     title: "Téléphone",
-    content: "+221 77 533 43 59",
-    link: "tel:+221775334359"
+    content: "+221 77 588 85 55",
+    link: "tel:+221775888555"
   },
   {
     icon: FaEnvelope,
