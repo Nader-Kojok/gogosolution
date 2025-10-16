@@ -25,7 +25,7 @@ const products = [
 
 export default function Products() {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "33600000000"; // À remplacer par le numéro WhatsApp réel
+    const phoneNumber = "221775334359"; // +221 77 533 43 59
     const message = "Bonjour, je suis intéressé par vos produits d&apos;équipement automobile.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");

@@ -334,7 +334,7 @@ export const generateReceiptPDF = (data: ReceiptData) => {
   
   doc.setFontSize(7);
   doc.setFont('helvetica', 'normal');
-  doc.text('Tél: +221 77 123 45 67 | Email: contact@ballago.sn | www.ballago.sn', margin, yPosition);
+  doc.text('Tél: +221 77 533 43 59 | Email: contact@gogosolution.com | www.gogosolution.com', margin, yPosition);
   
   yPosition += 10;
   
