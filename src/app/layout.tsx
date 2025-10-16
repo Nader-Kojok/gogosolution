@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { LocalBusinessSchema, WebSiteSchema } from "@/components/StructuredData";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -86,15 +87,6 @@ export const metadata: Metadata = {
   category: "transport",
   classification: "business",
   referrer: "origin-when-cross-origin",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" }
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -113,6 +105,16 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" }
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -120,6 +122,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
+      <head>
+        <LocalBusinessSchema />
+        <WebSiteSchema />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         <Navbar />
         <main>

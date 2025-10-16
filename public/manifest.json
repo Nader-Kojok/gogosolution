@@ -1,0 +1,29 @@
+{
+  "name": "GOGOSOLUTION - Service de Transport Premium à Dakar",
+  "short_name": "GOGOSOLUTION",
+  "description": "Service de transport VTC premium à Dakar. Transferts aéroport, chauffeur privé et courses professionnelles disponibles 24/7.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["transport", "business", "travel"],
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

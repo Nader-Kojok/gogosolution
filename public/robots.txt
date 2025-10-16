@@ -1,0 +1,16 @@
+# robots.txt pour GOGOSOLUTION
+# Permet à tous les robots d'indexer le site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://GOGOSOLUTION.com/sitemap.xml
+
+# Bloque les dossiers système et API
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1

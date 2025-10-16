@@ -8,9 +8,9 @@ import BookingClientWrapper from "@/components/BookingClientWrapper";
 import Stats from "@/components/sections/Stats";
 import Products from "@/components/sections/Products";
 import Pricing from "@/components/sections/Pricing";
+import FAQ from "@/components/sections/FAQ";
 
 export default function Home() {
-  // TODO: Gérer l'ouverture de la modal Booking côté client (via un composant client wrapper)
   return (
     <main className="relative">
       <Hero />
@@ -21,8 +21,8 @@ export default function Home() {
       <About />
       <Stats />
       <Testimonials />
+      <FAQ />
       <Contact />
-      {/* Les boutons et modals interactifs doivent être gérés dans un composant client wrapper */}
       <BookingClientWrapper />
     </main>
   );

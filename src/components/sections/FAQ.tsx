@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FAQSchema } from '@/components/StructuredData';
 
 type FAQItem = {
   id: number;
@@ -9,36 +10,66 @@ type FAQItem = {
   category: string;
 };
 
-const faqData: FAQItem[] = [
+export const faqData: FAQItem[] = [
   {
     id: 1,
-    category: "Booking",
-    question: "How far in advance should I book my transportation?",
-    answer: "We recommend booking at least 24-48 hours in advance to ensure availability. For special events or peak seasons, earlier booking is advised. However, we also accommodate last-minute requests based on availability."
+    category: "Réservation",
+    question: "Combien de temps à l'avance dois-je réserver mon transport ?",
+    answer: "Nous recommandons de réserver au moins 24 à 48 heures à l'avance pour garantir la disponibilité. Pour les événements spéciaux ou les périodes de forte affluence, une réservation anticipée est conseillée. Cependant, nous acceptons également les demandes de dernière minute selon les disponibilités."
   },
   {
     id: 2,
-    category: "Booking",
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards, debit cards, and digital payments including PayPal. Corporate clients can also arrange for invoicing with prior approval."
+    category: "Réservation",
+    question: "Quels modes de paiement acceptez-vous ?",
+    answer: "Nous acceptons tous les principaux modes de paiement : espèces, cartes bancaires, virements bancaires et paiements mobiles (Orange Money, Wave). Les clients professionnels peuvent également bénéficier de factures avec paiement différé sur approbation préalable."
   },
   {
     id: 3,
     category: "Services",
-    question: "What types of events do you cater to?",
-    answer: "We cater to a wide range of events including corporate transfers, airport pickups, weddings, proms, special occasions, and luxury tours. Our fleet can accommodate both individual and group transportation needs."
+    question: "Quels types d'événements couvrez-vous ?",
+    answer: "Nous couvrons une large gamme d'événements : transferts aéroport, déplacements professionnels, mariages, événements spéciaux, tours touristiques et transport VIP. Notre flotte peut accueillir aussi bien des particuliers que des groupes."
   },
   {
     id: 4,
     category: "Services",
-    question: "Do you provide chauffeur services for multiple days?",
-    answer: "Yes, we offer multi-day chauffeur services for events, tours, or business trips. Custom packages can be arranged to suit your specific requirements and schedule."
+    question: "Proposez-vous des services de chauffeur sur plusieurs jours ?",
+    answer: "Oui, nous proposons des services de chauffeur privé sur plusieurs jours pour des événements, des tours ou des voyages d'affaires. Des forfaits personnalisés peuvent être arrangés selon vos besoins spécifiques et votre emploi du temps."
   },
   {
     id: 5,
-    category: "Policies",
-    question: "What is your cancellation policy?",
-    answer: "Cancellations made 24 hours or more before the scheduled service are fully refundable. Cancellations within 24 hours may be subject to a cancellation fee. Please contact us for specific details."
+    category: "Services",
+    question: "Êtes-vous disponibles 24h/24 et 7j/7 ?",
+    answer: "Oui, GOGOSOLUTION est disponible 24 heures sur 24, 7 jours sur 7, y compris les jours fériés. Nous assurons vos déplacements à tout moment, de jour comme de nuit, pour répondre à tous vos besoins de transport."
+  },
+  {
+    id: 6,
+    category: "Tarifs",
+    question: "Comment sont calculés vos tarifs ?",
+    answer: "Nos tarifs sont calculés en fonction de la distance, du type de véhicule choisi et de la durée du service. Nous proposons des tarifs transparents sans frais cachés. Demandez un devis gratuit pour connaître le prix exact de votre trajet."
+  },
+  {
+    id: 7,
+    category: "Tarifs",
+    question: "Proposez-vous des forfaits pour les entreprises ?",
+    answer: "Oui, nous proposons des forfaits spéciaux pour les entreprises avec des tarifs préférentiels, facturation mensuelle et service prioritaire. Contactez-nous pour discuter d'un partenariat adapté à vos besoins professionnels."
+  },
+  {
+    id: 8,
+    category: "Politique",
+    question: "Quelle est votre politique d'annulation ?",
+    answer: "Les annulations effectuées 24 heures ou plus avant le service prévu sont entièrement remboursables. Les annulations dans les 24 heures peuvent être soumises à des frais d'annulation. Veuillez nous contacter pour plus de détails."
+  },
+  {
+    id: 9,
+    category: "Sécurité",
+    question: "Vos véhicules sont-ils assurés et vos chauffeurs qualifiés ?",
+    answer: "Absolument. Tous nos véhicules sont entièrement assurés et régulièrement entretenus. Nos chauffeurs sont professionnels, expérimentés, possèdent tous les permis requis et connaissent parfaitement Dakar et ses environs."
+  },
+  {
+    id: 10,
+    category: "Sécurité",
+    question: "Puis-je suivre mon trajet en temps réel ?",
+    answer: "Oui, nous offrons un service de suivi en temps réel pour votre tranquillité d'esprit. Vous pouvez suivre votre véhicule et partager votre trajet avec vos proches pour plus de sécurité."
   }
 ];
 
@@ -63,9 +94,20 @@ const FAQ = () => {
   const categories = Array.from(new Set(faqData.map(item => item.category)));
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <FAQSchema faqs={faqData.map(item => ({ question: item.question, answer: item.answer }))} />
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins">
+            <span className="bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
+              Questions Fréquentes
+            </span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-400 mx-auto mt-4 rounded-full" />
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            Trouvez les réponses aux questions les plus courantes sur nos services de transport VTC à Dakar
+          </p>
+        </div>
         
         <div className="max-w-3xl mx-auto">
           {categories.map(category => (
