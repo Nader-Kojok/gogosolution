@@ -21,7 +21,6 @@ export async function POST(req: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: 'GOGOSOLUTION <onboarding@resend.dev>', // Remplacer par votre domaine vérifié
       to: [CONTACT_CONFIG.email], // Email de l'entreprise
-      replyTo: bookingData.phone ? `${bookingData.customerName} <${bookingData.phone}>` : undefined,
       subject: `🚗 Nouvelle Réservation - ${bookingData.reservationNumber}`,
       react: BookingConfirmation({
         customerName: bookingData.customerName,
