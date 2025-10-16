@@ -67,7 +67,7 @@ export const BookingConfirmation = ({
             <Section className="bg-gray-900 rounded-t-lg p-6">
               <div style={{ textAlign: 'center' }}>
                 <Img
-                  src="https://www.gogosolution.sn/logo.svg"
+                  src="https://gogosolution.sn/logo.svg"
                   alt="GOGOSOLUTION"
                   width="120"
                   height="40"
