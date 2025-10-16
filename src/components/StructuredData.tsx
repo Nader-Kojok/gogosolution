@@ -12,7 +12,7 @@ export function LocalBusinessSchema() {
     "logo": "https://GOGOSOLUTION.com/logo.svg",
     "image": "https://GOGOSOLUTION.com/og-image.jpg",
     "telephone": "+221 77 588 85 55",
-    "email": "contact@gogosolution.com",
+    "email": "babambs@gogosolution.sn",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",

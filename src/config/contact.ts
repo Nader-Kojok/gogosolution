@@ -8,7 +8,7 @@ export const CONTACT_CONFIG = {
   whatsappNumber: '221775888555', // +221 77 588 85 55
   
   // Email de contact pour les réservations
-  email: 'contact@gogosolution.com',
+  email: 'babambs@gogosolution.sn',
   
   // Nom de l'entreprise
   companyName: 'GOGOSOLUTION',

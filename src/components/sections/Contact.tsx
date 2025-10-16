@@ -13,8 +13,8 @@ const contactInfo = [
   {
     icon: FaEnvelope,
     title: "Email",
-    content: "contact@GOGOSOLUTIONto-vtc.com",
-    link: "mailto:contact@GOGOSOLUTIONto-vtc.com"
+    content: "babambs@gogosolution.sn",
+    link: "mailto:babambs@gogosolution.sn"
   },
   {
     icon: FaMapMarkerAlt,
